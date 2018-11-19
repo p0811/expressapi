@@ -9,6 +9,12 @@
  // initilize routes 
  app.use('/api',require('./routes/api'));
 
+ // error handller middleware
+
+ app.use(function(err,req,res,next){
+    res.status(422).send({error:err.message});
+ })
+
  // listing for request  
  app.listen(process.env.port|| 4000,function(){
     console.log('port is ready for handling request');

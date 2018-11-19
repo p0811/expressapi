@@ -2,6 +2,20 @@ const mongooes = require('mongoose');
 const Schema = mongooes.Schema;
 
 
+//create geoschema
+const GeoSchema = new Schema({
+    type : {
+        type : String,
+        default: "Point"
+    },
+    coordinates : {
+        type : [Number],
+        index : "2dsphere"
+ 
+    }
+
+});
+
 //create ninjas schema and models 
 
 const NinjaSchema = new Schema({
@@ -16,8 +30,9 @@ const NinjaSchema = new Schema({
     availabel:{
         type:Boolean,
         default:false
-    }
+    },
     // add in geo location  data
+    //geometry:GeoSchema
 });
 
 
